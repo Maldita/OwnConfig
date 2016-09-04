@@ -5,12 +5,12 @@
 	htuser='www-data'
 	htgroup='www-data'
 	rootuser='root'
-	OCDATA='/var/ocdata'
+	OCDATA='/var/www/owncloud/data'
 #Ejecucion
 	printf "Creating possible missing Directories\n"
-	mkdir -p $ocpath/data
+	#mkdir -p $ocpath/data
 	mkdir -p $ocpath/assets
-	mkdir -p $OCDATA
+	#mkdir -p $OCDATA
 
 	printf "chmod Files and Directories\n"
 	find ${ocpath}/ -type f -print0 | xargs -0 chmod 0640
