@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #---------------- Comprueba existencia de parametros -------------------
-	if [ $# -ne 3 ]; then
+	if [ $# -ne 4 ]; then
 		echo $0: Falta indicar NumeroServicio o NombreServicio o IPFailover -u opcionalmente NombreNube-
 		exit 1
 	fi
