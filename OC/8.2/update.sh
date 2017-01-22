@@ -12,7 +12,7 @@ fi
 	OCVERSION=$1
 	SCRIPTS=/root/00-Scripts # OJO - modificado
 	LOGS=/root/00-Scripts/logs # OJO - añadido
-	BACKUP=/var/backup # OJO - modificado
+	BACKUP=/var/www/backup # OJO - modificado a la partición montada en /var/www con más capacidad para servidores en producción
 	OCPATH=/var/www/owncloud
 	DATA=/var/www/owncloud/data # OJO - modificado
 	BASE=/var/www # OJO - añadido
