@@ -57,10 +57,11 @@ fi
 	service apache2 stop
 
 # Backup data
+	echo "Realizando Copia de Seguridad de data y themes"
 	touch $FILES_BACKUP # OJO - añadido
-	rsync -Aaxv $DATA $BACKUP >> $FILES_BACKUP # OJO - modificado - añadido parámetro "v" para aumentar salida verbose a log
-	rsync -Aaxv $OCPATH/config $BACKUP  >> $FILES_BACKUP # OJO - modificado
-	rsync -Aaxv $OCPATH/themes $BACKUP >> $FILES_BACKUP # OJO - modificado
+	rsync -Aaxv $DATA $BACKUP | tee -a $FILES_BACKUP # OJO - modificado - añadido parámetro "v" para aumentar salida verbose a log
+	rsync -Aaxv $OCPATH/config $BACKUP | tee -a $FILES_BACKUP # OJO - modificado
+	rsync -Aaxv $OCPATH/themes $BACKUP | tee -a $FILES_BACKUP # OJO - modificado
 	#rsync -Aaxv $OCPATH/apps $BACKUP >> $FILES_BACKUP # OJO - modificado # OJO, innecesario si no hay apps 3rd party, modificadas o de GIT
 	if [[ $? > 0 ]]
 		then
@@ -114,9 +115,9 @@ fi
 		        tar -xvf $BACKUP/owncloud-$OCVERSION.tar.bz2 -C $BASE >> $FILES_NEW # OJO - modificado en ruta de destino y opciones tar
 		        rm $BACKUP/owncloud-$OCVERSION.tar.bz2
 		        touch $FILES_RESTORE # OJO - añadido
-		        cp -R $BACKUP/themes $OCPATH/  >> $FILES_RESTORE && rm -rf $BACKUP/themes # OJO - modificado 
-		        cp -Rv $BACKUP/data $DATA  >> $FILES_RESTORE && rm -rf $BACKUP/data # OJO - modificado 
-		        cp -R $BACKUP/config $OCPATH/ >> $FILES_RESTORE  && rm -rf $BACKUP/config # OJO - modificado  
+		        cp -R $BACKUP/themes $OCPATH/ | tee -a $FILES_RESTORE && rm -rf $BACKUP/themes # OJO - modificado 
+		        cp -Rv $BACKUP/data $DATA | tee -a $FILES_RESTORE && rm -rf $BACKUP/data # OJO - modificado 
+		        cp -R $BACKUP/config $OCPATH/ | tee -a $FILES_RESTORE  && rm -rf $BACKUP/config # OJO - modificado  
 		        # cp -R $BACKUP/apps $OCPATH/  >> $FILES_RESTORE  && rm -rf $BACKUP/apps # OJO - modificado, solo se puede hacer para 3party apps, modificadas o de git - Importante no tocar
 		        bash $SECURE
 		        # Start Apache # OJO - Añadido todo el apartado
