@@ -59,9 +59,9 @@ fi
 # Backup data
 	echo "Realizando Copia de Seguridad de data y themes"
 	touch $FILES_BACKUP # OJO - añadido
-	rsync -Aaxv $DATA $BACKUP | tee -a $FILES_BACKUP # OJO - modificado - añadido parámetro "v" para aumentar salida verbose a log
-	rsync -Aaxv $OCPATH/config $BACKUP | tee -a $FILES_BACKUP # OJO - modificado
-	rsync -Aaxv $OCPATH/themes $BACKUP | tee -a $FILES_BACKUP # OJO - modificado
+	rsync -Aaxv --info=progress2 $DATA $BACKUP | tee -a $FILES_BACKUP # OJO - modificado - añadido parámetro "v" para aumentar salida verbose a log
+	rsync -Aaxv --info=progress2 $OCPATH/config $BACKUP | tee -a $FILES_BACKUP # OJO - modificado
+	rsync -Aaxv --info=progress2 $OCPATH/themes $BACKUP | tee -a $FILES_BACKUP # OJO - modificado
 	#rsync -Aaxv $OCPATH/apps $BACKUP >> $FILES_BACKUP # OJO - modificado # OJO, innecesario si no hay apps 3rd party, modificadas o de GIT
 	if [[ $? > 0 ]]
 		then
