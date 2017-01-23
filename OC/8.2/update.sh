@@ -59,7 +59,8 @@ fi
 # Backup data
 	echo "Realizando Copia de Seguridad de data y themes"
 	touch $FILES_BACKUP # OJO - añadido
-	rsync -Aaxv --info=progress2 $DATA $BACKUP | tee -a $FILES_BACKUP # OJO - modificado - añadido parámetro "v" para aumentar salida verbose a log
+	#rsync -Aaxv --info=progress2 $DATA $BACKUP | tee -a $FILES_BACKUP # OJO - modificado - añadido parámetro "v" para aumentar salida verbose a log
+	mv $OCPATH/data/ $BACKUP/data/ #nueva versión para backup de data, para hacer más rapido el proceso. Sólo apto si se hace snapshot de seguridad.Arriesgado.
 	rsync -Aaxv --info=progress2 $OCPATH/config $BACKUP | tee -a $FILES_BACKUP # OJO - modificado
 	rsync -Aaxv --info=progress2 $OCPATH/themes $BACKUP | tee -a $FILES_BACKUP # OJO - modificado
 	#rsync -Aaxv $OCPATH/apps $BACKUP >> $FILES_BACKUP # OJO - modificado # OJO, innecesario si no hay apps 3rd party, modificadas o de GIT
@@ -115,7 +116,8 @@ fi
 		        tar -xvf $BACKUP/owncloud-$OCVERSION.tar.bz2 -C $BASE >> $FILES_NEW # OJO - modificado en ruta de destino y opciones tar
 		        rm $BACKUP/owncloud-$OCVERSION.tar.bz2
 		        touch $FILES_RESTORE # OJO - añadido
-		        cp -R $BACKUP/themes $OCPATH/ | tee -a $FILES_RESTORE && rm -rf $BACKUP/themes # OJO - modificado 
+		        #cp -R $BACKUP/themes $OCPATH/ | tee -a $FILES_RESTORE && rm -rf $BACKUP/themes # OJO - modificado
+			mv $BACKUP/data/ $OCPATH/data/
 		        cp -Rv $BACKUP/data $DATA | tee -a $FILES_RESTORE && rm -rf $BACKUP/data # OJO - modificado 
 		        cp -R $BACKUP/config $OCPATH/ | tee -a $FILES_RESTORE  && rm -rf $BACKUP/config # OJO - modificado  
 		        # cp -R $BACKUP/apps $OCPATH/  >> $FILES_RESTORE  && rm -rf $BACKUP/apps # OJO - modificado, solo se puede hacer para 3party apps, modificadas o de git - Importante no tocar
