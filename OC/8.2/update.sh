@@ -61,6 +61,7 @@ fi
 	touch $FILES_BACKUP # OJO - añadido
 	#rsync -Aaxv --info=progress2 $DATA $BACKUP | tee -a $FILES_BACKUP # OJO - modificado - añadido parámetro "v" para aumentar salida verbose a log
 	mv $OCPATH/data/ $BACKUP/data/ #nueva versión para backup de data, para hacer más rapido el proceso. Sólo apto si se hace snapshot de seguridad.Arriesgado.
+	mkdir $DATA #Debe existir un directorio vacio de data para que la comprobación posterior no falle.
 	rsync -Aaxv --info=progress2 $OCPATH/config $BACKUP | tee -a $FILES_BACKUP # OJO - modificado
 	rsync -Aaxv --info=progress2 $OCPATH/themes $BACKUP | tee -a $FILES_BACKUP # OJO - modificado
 	#rsync -Aaxv $OCPATH/apps $BACKUP >> $FILES_BACKUP # OJO - modificado # OJO, innecesario si no hay apps 3rd party, modificadas o de GIT
