@@ -117,7 +117,7 @@ fi
 		        tar -xvf $BACKUP/owncloud-$OCVERSION.tar.bz2 -C $BASE >> $FILES_NEW # OJO - modificado en ruta de destino y opciones tar
 		        rm $BACKUP/owncloud-$OCVERSION.tar.bz2
 		        touch $FILES_RESTORE # OJO - añadido
-		        #cp -R $BACKUP/themes $OCPATH/ | tee -a $FILES_RESTORE && rm -rf $BACKUP/themes # OJO - modificado
+		        cp -R $BACKUP/themes $OCPATH/ | tee -a $FILES_RESTORE && rm -rf $BACKUP/themes # OJO - modificado #150717 Descomentado, aparentemente estaba mal comentado, hace falta para restaurar el tema
 			mv $BACKUP/data/ $OCPATH/data/
 		        #cp -Rv $BACKUP/data $DATA | tee -a $FILES_RESTORE && rm -rf $BACKUP/data # OJO - modificado #150717 Aparentemente obsoleto, al mover DATA y no copiarlo ya no existe en es ruta en este momento
 		        cp -R $BACKUP/config $OCPATH/ | tee -a $FILES_RESTORE  && rm -rf $BACKUP/config # OJO - modificado  
