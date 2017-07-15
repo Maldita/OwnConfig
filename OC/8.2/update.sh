@@ -119,7 +119,7 @@ fi
 		        touch $FILES_RESTORE # OJO - añadido
 		        #cp -R $BACKUP/themes $OCPATH/ | tee -a $FILES_RESTORE && rm -rf $BACKUP/themes # OJO - modificado
 			mv $BACKUP/data/ $OCPATH/data/
-		        cp -Rv $BACKUP/data $DATA | tee -a $FILES_RESTORE && rm -rf $BACKUP/data # OJO - modificado 
+		        #cp -Rv $BACKUP/data $DATA | tee -a $FILES_RESTORE && rm -rf $BACKUP/data # OJO - modificado #150717 Aparentemente obsoleto, al mover DATA y no copiarlo ya no existe en es ruta en este momento
 		        cp -R $BACKUP/config $OCPATH/ | tee -a $FILES_RESTORE  && rm -rf $BACKUP/config # OJO - modificado  
 		        # cp -R $BACKUP/apps $OCPATH/  >> $FILES_RESTORE  && rm -rf $BACKUP/apps # OJO - modificado, solo se puede hacer para 3party apps, modificadas o de git - Importante no tocar
 		        bash $SECURE
